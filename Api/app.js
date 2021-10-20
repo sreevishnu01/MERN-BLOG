@@ -3,9 +3,26 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+// env varibale
+const url = process.env.mongoUrl;
+
+const connect = mongoose.connect(url);
+
+
+
+connect.then((db) => {
+  console.log('mongodb connected');
+}, (err) => { console.log(err); });
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const postRouter = require('./routes/blogposts/post');
+const commentRouter = require('./routes/blogposts/comments');
 
 var app = express();
 
@@ -20,15 +37,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/post', postRouter);
 app.use('/users', usersRouter);
+app.use('/post', commentRouter);
+
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
