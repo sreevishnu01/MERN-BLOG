@@ -6,6 +6,11 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const mongoose = require('mongoose');
+let session = require('express-session');
+let FileStore = require('session-file-store')(session);
+const passport = require('passport');
+let authenticate = require('./authenticate');
+
 
 // env varibale
 const url = process.env.mongoUrl;
@@ -36,11 +41,39 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/post', postRouter);
-app.use('/users', usersRouter);
-app.use('/post', commentRouter);
+app.use(session({
+  name: 'session-id',
+  secret: '12345-67890-09876-54321',
+  saveUninitialized: false,
+  resave: false,
+  store: new FileStore()
+}));
+// passport login
+app.use(passport.initialize());
+app.use(passport.session());
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+
+function auth(req, res, next) {
+  console.log(req.user);
+
+  if (!req.user) {
+    var err = new Error('You are not authenticated!');
+    err.status = 403;
+    next(err);
+  }
+  else {
+    next();
+  }
+}
+
+app.use(auth);
+
+
+app.use('/post', postRouter);
+app.use('/post', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
