@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Posts = require('../../models/postModel');
+const authenticate = require('../../authenticate');
 
 const postRouter = express.Router();
 
@@ -24,7 +25,7 @@ postRouter.route('/:postId/comments')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .post((req, res, next) => {
+    .post(authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null) {
@@ -44,7 +45,7 @@ postRouter.route('/:postId/comments')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete((req, res, next) => {
+    .delete(authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null) {
@@ -69,7 +70,7 @@ postRouter.route('/:postId/comments')
 
 
 postRouter.route('/:postId/comments/:commentId')
-    .get((req, res, next) => {
+    .get(authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null && post.comments.id(req.params.commentId) != null) {
@@ -90,7 +91,7 @@ postRouter.route('/:postId/comments/:commentId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .put((req, res, next) => {
+    .put(authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null && post.comments.id(req.params.commentId) != null) {
@@ -120,7 +121,7 @@ postRouter.route('/:postId/comments/:commentId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete((req, res, next) => {
+    .delete(authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null && post.comments.id(req.params.commentId) != null) {

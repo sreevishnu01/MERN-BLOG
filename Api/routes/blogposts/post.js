@@ -3,13 +3,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Posts = require('../../models/postModel');
 const commentModel = require('../../models/commentModel');
+const authenticate = require('../../authenticate');
 
 const postRouter = express.Router();
 
 postRouter.use(bodyParser.json());
 
 postRouter.route('/')
-    .get((req, res, next) => {
+    .get(authenticate.varifyUser, (req, res, next) => {
         Posts.find({})
             .then((posts) => {
                 res.statusCode = 200;
@@ -18,7 +19,7 @@ postRouter.route('/')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .post((req, res, next) => {
+    .post(authenticate.varifyUser, (req, res, next) => {
         Posts.create(req.body)
             .then((post) => {
                 console.log(post)
@@ -28,7 +29,7 @@ postRouter.route('/')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete((req, res, next) => {
+    .delete(authenticate.varifyUser, (req, res, next) => {
         Posts.remove({})
             .then((resp) => {
                 res.statusCode = 200;
@@ -48,7 +49,7 @@ postRouter.route('/:postId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .put((req, res, next) => {
+    .put(authenticate.varifyUser, (req, res, next) => {
         Posts.findByIdAndUpdate(req.params.postId, {
             $set: req.body
         }, { new: true })
@@ -59,7 +60,7 @@ postRouter.route('/:postId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete((req, res, next) => {
+    .delete(authenticate.varifyUser, (req, res, next) => {
         Posts.findByIdAndRemove(req.params.postId)
             .then((deleteResponse) => {
                 res.statusCode = 200;

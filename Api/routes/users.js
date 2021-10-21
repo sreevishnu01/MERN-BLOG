@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const User = require('../models/userModel');
 const passport = require('passport');
+const authenticate = require('../authenticate');
 
 router.use(bodyParser.json());
 /* GET users listing. */
@@ -31,16 +32,17 @@ router.post('/signup', (req, res, next) => {
 
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
+  let token = authenticate.getToken({ _id: req.user._id });
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.json({ success: true, status: "You are successfully login" });
+  res.json({ success: true, token: token, status: "You are successfully login" });
 });
 
 
-router.get('/logout', (req, res) => {
+router.get('/logout', authenticate.varifyUser, (req, res) => {
   if (req.session) {
-    req.session.destroy();
-    res.clearCookie('session-id');
+    // req.session.destroy();
+    res.clearCookie('jwt');
     res.redirect('/');
   }
   else {
