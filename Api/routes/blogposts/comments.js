@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Posts = require('../../models/postModel');
 const authenticate = require('../../authenticate');
+const cors = require('../cors');
 
 const postRouter = express.Router();
 
 postRouter.use(bodyParser.json());
 
 postRouter.route('/:postId/comments')
-    .get((req, res, next) => {
+    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+    .get(cors.cors, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null) {
@@ -25,7 +27,7 @@ postRouter.route('/:postId/comments')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .post(authenticate.varifyUser, (req, res, next) => {
+    .post(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null) {
@@ -45,7 +47,7 @@ postRouter.route('/:postId/comments')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete(authenticate.varifyUser, (req, res, next) => {
+    .delete(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null) {
@@ -70,7 +72,8 @@ postRouter.route('/:postId/comments')
 
 
 postRouter.route('/:postId/comments/:commentId')
-    .get(authenticate.varifyUser, (req, res, next) => {
+    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+    .get(cors.cors, authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null && post.comments.id(req.params.commentId) != null) {
@@ -91,7 +94,7 @@ postRouter.route('/:postId/comments/:commentId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .put(authenticate.varifyUser, (req, res, next) => {
+    .put(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null && post.comments.id(req.params.commentId) != null) {
@@ -121,7 +124,7 @@ postRouter.route('/:postId/comments/:commentId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete(authenticate.varifyUser, (req, res, next) => {
+    .delete(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 if (post != null && post.comments.id(req.params.commentId) != null) {

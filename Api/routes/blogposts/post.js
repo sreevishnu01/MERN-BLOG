@@ -4,13 +4,15 @@ const mongoose = require('mongoose');
 const Posts = require('../../models/postModel');
 const commentModel = require('../../models/commentModel');
 const authenticate = require('../../authenticate');
+const cors = require('../cors');
 
 const postRouter = express.Router();
 
 postRouter.use(bodyParser.json());
 
 postRouter.route('/')
-    .get(authenticate.varifyUser, (req, res, next) => {
+    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+    .get(cors.cors, (req, res, next) => {
         Posts.find({})
             .then((posts) => {
                 res.statusCode = 200;
@@ -19,7 +21,7 @@ postRouter.route('/')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .post(authenticate.varifyUser, (req, res, next) => {
+    .post(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.create(req.body)
             .then((post) => {
                 console.log(post)
@@ -29,7 +31,7 @@ postRouter.route('/')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete(authenticate.varifyUser, (req, res, next) => {
+    .delete(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.remove({})
             .then((resp) => {
                 res.statusCode = 200;
@@ -40,7 +42,8 @@ postRouter.route('/')
     });
 
 postRouter.route('/:postId')
-    .get((req, res, next) => {
+    .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+    .get(cors.cors, (req, res, next) => {
         Posts.findById(req.params.postId)
             .then((post) => {
                 res.statusCode = 200;
@@ -49,7 +52,7 @@ postRouter.route('/:postId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .put(authenticate.varifyUser, (req, res, next) => {
+    .put(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.findByIdAndUpdate(req.params.postId, {
             $set: req.body
         }, { new: true })
@@ -60,7 +63,7 @@ postRouter.route('/:postId')
             }, (err) => next(err))
             .catch((err) => next(err));
     })
-    .delete(authenticate.varifyUser, (req, res, next) => {
+    .delete(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
         Posts.findByIdAndRemove(req.params.postId)
             .then((deleteResponse) => {
                 res.statusCode = 200;
