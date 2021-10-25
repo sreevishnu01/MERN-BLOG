@@ -13,12 +13,18 @@ const commentSchema = new Schema({
         required: true
     },
     author: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    postid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post',
+        require: true
     }
 
 }, {
     timestamps: true
 });
 
-module.exports = commentSchema;
+let Comments = mongoose.model('Comment', commentSchema);
+module.exports = Comments;

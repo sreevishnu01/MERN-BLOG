@@ -13,7 +13,8 @@ postRouter.use(bodyParser.json());
 postRouter.route('/')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.cors, (req, res, next) => {
-        Posts.find({})
+        Posts.find(req.query)
+            .populate('author')
             .then((posts) => {
                 res.statusCode = 200;
                 res.setHeader('content-Type', 'application/json');
@@ -22,6 +23,7 @@ postRouter.route('/')
             .catch((err) => next(err));
     })
     .post(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
+        req.body.author = req.user._id;
         Posts.create(req.body)
             .then((post) => {
                 console.log(post)
@@ -45,6 +47,7 @@ postRouter.route('/:postId')
     .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
     .get(cors.cors, (req, res, next) => {
         Posts.findById(req.params.postId)
+            .populate('author')
             .then((post) => {
                 res.statusCode = 200;
                 res.setHeader('content-Type', 'application/json');

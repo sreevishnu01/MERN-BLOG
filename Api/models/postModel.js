@@ -19,7 +19,10 @@ const postSchema = new Schema({
         type: Boolean,
         default: false
     },
-    comments: [commentSchema]
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    } 
 }, {
     timestamps: true
 });
