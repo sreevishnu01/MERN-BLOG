@@ -51,7 +51,7 @@ router.post('/login', cors.corsWithOptions, passport.authenticate('local'), (req
   let token = authenticate.getToken({ _id: req.user._id });
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.json({ success: true, token: token, status: "You are successfully login" });
+  res.json({ success: true, id: req.user._id, username: req.user.firstname, token: token, status: "You are successfully login" });
 });
 
 

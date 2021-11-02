@@ -21,6 +21,7 @@ commentRouter.route('/')
             .catch((err) => next(err));
     })
     .post(cors.corsWithOptions, authenticate.varifyUser, (req, res, next) => {
+        console.log(req.body)
         if (req.body != null) {
             req.body.author = req.user._id;
             Comments.create(req.body)

@@ -18,7 +18,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 exports.getToken = function (user) {
-    return jwt.sign(user, key, { expiresIn: 3000 });
+    return jwt.sign(user, key, { expiresIn: 1 });
 };
 
 
