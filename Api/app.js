@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 let session = require('express-session');
 let FileStore = require('session-file-store')(session);
 const passport = require('passport');
+const cors = require('cors');
 
 
 // env varibale
@@ -27,8 +28,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const postRouter = require('./routes/blogposts/post');
 const commentRouter = require('./routes/blogposts/comments');
+const categoryRouter = require('./routes/blogposts/category');
+
 
 var app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +46,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+
 // passport login
 app.use(passport.initialize());
 
@@ -49,6 +55,7 @@ app.use('/users', usersRouter);
 
 app.use('/post', postRouter);
 app.use('/comments', commentRouter);
+app.use('/categorys', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

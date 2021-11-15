@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const commentSchema = require('./commentModel');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
@@ -8,7 +7,7 @@ const postSchema = new Schema({
         required: true,
     },
     description: {
-        type: String,
+        type: Schema.Types.Mixed,
         required: true
     },
     label: {
@@ -20,9 +19,14 @@ const postSchema = new Schema({
         default: false
     },
     author: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User'
-    } 
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'category'
+
+    }
 }, {
     timestamps: true
 });

@@ -51,7 +51,7 @@ router.post('/login', cors.corsWithOptions, passport.authenticate('local'), (req
   let token = authenticate.getToken({ _id: req.user._id });
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.json({ success: true, id: req.user._id, username: req.user.firstname, token: token, status: "You are successfully login" });
+  res.json({ success: true, id: req.user._id, username: req.user.firstname, token: token, categories: req.user.categories });
 });
 
 
@@ -68,5 +68,28 @@ router.get('/logout', cors.corsWithOptions, authenticate.varifyUser, (req, res) 
   }
 });
 
+router.route('/:userId')
+  .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+  .get(cors.cors, (req, res, next) => {
+    User.findById(req.params.userId)
+      .then((user) => {
+        res.statusCode = 200;
+        res.setHeader('content-Type', 'application/json');
+        res.json(user);
+      }, (err) => next(err))
+      .catch((err) => next(err));
+  })
+
+  .put(cors.corsWithOptions, authenticate.varifyUser, (req, res) => {
+    User.findByIdAndUpdate(req.params.userId, {
+      $set: req.body
+    }, { new: true })
+      .then((post) => {
+        res.statusCode = 200;
+        res.setHeader('content-Type', 'application/json');
+        res.json(post);
+      }, (err) => next(err))
+      .catch((err) => next(err));
+  });
 
 module.exports = router;

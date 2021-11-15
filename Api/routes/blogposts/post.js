@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const Posts = require('../../models/postModel');
-const commentModel = require('../../models/commentModel');
 const authenticate = require('../../authenticate');
 const cors = require('../cors');
 
@@ -15,6 +13,7 @@ postRouter.route('/')
     .get(cors.cors, (req, res, next) => {
         Posts.find(req.query)
             .populate('author')
+            .populate('category')
             .then((posts) => {
                 res.statusCode = 200;
                 res.setHeader('content-Type', 'application/json');
@@ -48,6 +47,7 @@ postRouter.route('/:postId')
     .get(cors.cors, (req, res, next) => {
         Posts.findById(req.params.postId)
             .populate('author')
+            .populate('category')
             .then((post) => {
                 res.statusCode = 200;
                 res.setHeader('content-Type', 'application/json');
@@ -75,6 +75,11 @@ postRouter.route('/:postId')
             }, (err) => next(err))
             .catch((err) => next(err));
     });
+
+
+
+
+
 
 
 module.exports = postRouter;
