@@ -1,0 +1,28 @@
+
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+
+$theme-colors: (
+  "primary":    #0074d9,
+  "secondary":  #2163e8,
+  "danger":     rgba(33, 99, 232, 0.1),
+ 
+);
+
+// "light":      $light,
+// "dark":       $dark
+// "success":    $success,
+// "info":       $info,
+// "warning":    $warning,
+
+// Include any default variable overrides here (though functions won't be available)
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Then add additional custom code here
+
+
+.ck-editor__editable_inline {
+  min-height: 400px;
+}

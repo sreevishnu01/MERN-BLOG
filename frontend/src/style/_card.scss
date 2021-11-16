@@ -1,0 +1,111 @@
+@use 'custom' as *;
+
+// card grid for fix height
+
+  .card-grid-lg{
+    height: 560px;
+  }
+  .card-grid-sm{
+    height: calc(280px - calc(var(--bs-gutter-y) / 2));
+  }
+@include media-breakpoint-down(md) {
+  .card-grid .card-grid-lg{
+    height: 400px;
+  }
+}
+
+.card{
+  border-radius: 0.7rem;
+}
+.card-ct{
+  border-top-left-radius: 0.7rem !important;
+  border-top-right-radius: 0.7rem !important;
+}
+
+
+// card background color
+
+.card-bg-img{
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center;
+  overflow: hidden;
+  border-radius: 0.7rem !important;
+  
+}
+
+// Hovering on card to show hover overlay on bottom
+
+.card-overlay-bottom{
+    overflow: hidden;
+    &:before {
+      content: "";
+      position: absolute;
+      height: 50%;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba($black, 1)));
+      background-image: linear-gradient(180deg, transparent, rgba($black, 1));
+      z-index: 1;
+    }
+  }
+  .card-img-overlay{
+    z-index: 2;
+  }
+
+
+// Hovering on card to show hover overlay on top
+.card{
+  &.card-overlay-top{
+    overflow: hidden;
+    &:before {
+      content: "";
+      position: absolute;
+      height: 50%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba($black, 1)));
+      background-image: linear-gradient(0deg, transparent, rgba($black, 1));
+    }
+  }
+}
+
+// Card hover image scale
+.card-img-scale{
+  .card-img {
+    transition: $transition-base;
+    transform: scale(1);
+  } 
+  &:hover .card-img{
+    transform: scale(1.08);
+  }
+}
+
+// Card hover bg image scale
+.card-bg-scale{
+  z-index: 99;
+}
+.card-bg-scale::after { 
+  content:"";
+  position:absolute; 
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background: inherit;
+  transition: all 1s !important;
+  z-index: -2;
+}
+.card-bg-scale:hover::after { 
+  transform: scale(1.1);
+  transition: all 1s !important;
+}
+
+// card shadow
+.card-shadow {
+  box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+}
