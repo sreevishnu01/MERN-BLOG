@@ -2,12 +2,13 @@
 // Custom.scss
 // Option A: Include all of Bootstrap
 
-
 $theme-colors: (
   "primary":    #0074d9,
   "secondary":  #2163e8,
-  "danger":     rgba(33, 99, 232, 0.1),
- 
+  "danger":    #000000,
+  "dark":       #000000,
+  "info": #F8F8F8,
+  
 );
 
 // "light":      $light,

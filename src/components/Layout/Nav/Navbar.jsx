@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React from 'react'
 import { logOut } from '../../../redux/auth';
 import pic from '../../../assets/707653.jpeg'
-import { Link } from 'react-router-dom'
+
 const Navbar1 = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.token)
