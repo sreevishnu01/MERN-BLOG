@@ -90,7 +90,7 @@ function Editor() {
                         </Row>
 
                         <Form.Group controlId="formBasicDiscription" className="mt-3">
-                            <CKEditor editor={ClassicEditor}
+                            <CKEditor  editor={ClassicEditor}
                                 onChange={(event, editor) =>
                                     setDisc(editor.getData())
                                 } />

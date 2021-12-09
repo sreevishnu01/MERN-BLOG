@@ -14,6 +14,7 @@
     "bootstrap": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "postcss-custom-properties": "^12.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-rc.1",
     "react-dom": "^17.0.2",
@@ -49,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "react-scripts/postcss-preset-env/postcss-custom-properties": "^10.0.0"
   }
 }
