@@ -2,12 +2,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sidebar from "../Layout/Sidebar/Sidebar";
 import Test from "../Layout/Nav/Test";
-import axios from '../../assets/axiosconfig';
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from "react-redux";
-import { blogPostAll } from "../../redux/blog";
 import frameimg from '../../assets/707653.jpeg'
-import CategoryAction from "../../hooks/useCategoryAction";
 import { useGetAllBlogQuery } from '../../redux/blogApi';
 
 
@@ -15,23 +10,8 @@ import { useGetAllBlogQuery } from '../../redux/blogApi';
 // card  
 
 function Blogposts() {
-    // const { getCategory } = CategoryAction();
 
     const { data, error, isLoading } = useGetAllBlogQuery('post')
-
-    // const dispatch = useDispatch();
-    // setposts(data)
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //         const res = await axios.get("/post")
-    //         dispatch(blogPostAll(res.data));
-    //         setposts(res.data)
-    //     }
-    //     fetchPosts();
-    //     getCategory()
-
-    // }, [data])
-
     return (
         <Container className="pt-5 pb-5 mb-5">
             <Row className="mb-5">

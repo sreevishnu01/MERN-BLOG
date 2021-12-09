@@ -3,13 +3,10 @@ import { Card, Form, Button } from 'react-bootstrap'
 import axios from '../../assets/axiosconfig'
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { useGetBlogByIdQuery } from '../../redux/blogApi'
 
 function Comments() {
 
     const user = useSelector(state => state.user.token)
-    const { data, isLoading, error } = useGetBlogByIdQuery()
-
     const location = useLocation()
     const path = location.pathname.split("/")[2];
     const [postcomments, setPostComment] = useState({})

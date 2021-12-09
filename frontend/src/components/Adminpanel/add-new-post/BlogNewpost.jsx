@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Editor from './Editor'
-import SidebarCategories from './SidebarCategories'
 function BlogNewpost() {
 
 
@@ -12,7 +11,6 @@ function BlogNewpost() {
                     <Editor />
                 </Col>
                 <Col>
-                    <SidebarCategories />
                 </Col>
             </Row>
 

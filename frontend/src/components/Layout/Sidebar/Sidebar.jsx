@@ -17,11 +17,23 @@ function Sidebar() {
 
         <Container className=" sticky-md-top mb-5" >
             <h4 className="mb-3">Trending topics</h4>
-            {categorys.map((p) => (
-                <Card key={p._id} className="mb-3 text-center">
-                    <Card.Title >{p.title}</Card.Title>
-                </Card>
-            ))}
+            {categorys ? (
+                <>
+                    {categorys.map((p) => (
+                        <Card key={p._id} className="mb-3 text-center">
+                            <Card.Title >{p.title}</Card.Title>
+                        </Card>
+                    ))
+                    }
+                </>
+            ) : (
+                <>
+                    <Card className="mb-3 text-center">
+                        <Card.Title >loding ...</Card.Title>
+                    </Card>
+                </>
+            )}
+
             <div className="text-center mt-3">
                 <a href='ss' className="fw-bold text-body text-primary-hover"><u>View all categories</u></a>
             </div>
