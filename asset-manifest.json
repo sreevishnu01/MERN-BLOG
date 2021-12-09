@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/MERN-Blog/static/css/main.97a804d1.chunk.css",
+    "main.js": "/MERN-Blog/static/js/main.32f9c493.chunk.js",
+    "main.js.map": "/MERN-Blog/static/js/main.32f9c493.chunk.js.map",
+    "runtime-main.js": "/MERN-Blog/static/js/runtime-main.78507e75.js",
+    "runtime-main.js.map": "/MERN-Blog/static/js/runtime-main.78507e75.js.map",
+    "static/css/2.0b942a61.chunk.css": "/MERN-Blog/static/css/2.0b942a61.chunk.css",
+    "static/js/2.9c2e4450.chunk.js": "/MERN-Blog/static/js/2.9c2e4450.chunk.js",
+    "static/js/2.9c2e4450.chunk.js.map": "/MERN-Blog/static/js/2.9c2e4450.chunk.js.map",
+    "index.html": "/MERN-Blog/index.html",
+    "static/css/2.0b942a61.chunk.css.map": "/MERN-Blog/static/css/2.0b942a61.chunk.css.map",
+    "static/css/main.97a804d1.chunk.css.map": "/MERN-Blog/static/css/main.97a804d1.chunk.css.map",
+    "static/js/2.9c2e4450.chunk.js.LICENSE.txt": "/MERN-Blog/static/js/2.9c2e4450.chunk.js.LICENSE.txt",
+    "static/media/2188603.e765f90c.png": "/MERN-Blog/static/media/2188603.e765f90c.png",
+    "static/media/707653.c2258f1d.jpeg": "/MERN-Blog/static/media/707653.c2258f1d.jpeg",
+    "static/media/9159.3dea0473.jpeg": "/MERN-Blog/static/media/9159.3dea0473.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.78507e75.js",
+    "static/css/2.0b942a61.chunk.css",
+    "static/js/2.9c2e4450.chunk.js",
+    "static/css/main.97a804d1.chunk.css",
+    "static/js/main.32f9c493.chunk.js"
+  ]
+}
