@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React from 'react'
 import { logOut } from '../../../redux/auth';
 import pic from '../../../assets/707653.jpeg'
-
+import { Link } from 'react-router-dom'
 const Navbar1 = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.token)
@@ -20,7 +20,7 @@ const Navbar1 = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav onSelect className="mx-auto">
-                        <Nav.Link href="/Tutorial">Tutorial</Nav.Link>
+                        <Nav.Link href="#/Tutorial">Tutorial</Nav.Link>
                         <Nav.Link href="#link">Make Money</Nav.Link>
                         <NavDropdown title="Tools" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -34,12 +34,13 @@ const Navbar1 = () => {
                     </Nav>
                     {user ? (
                         <Nav>
-                            <Navbar.Brand href="/admin"><Image
+                            <Navbar.Brand to="/admin"><Image
                                 src={pic}
                                 width="40"
                                 height="40"
                                 alt="logo" roundedCircle
                             /></Navbar.Brand>
+                            <Link to="/admin">sss</Link>
                             <NavDropdown title={user.username} id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

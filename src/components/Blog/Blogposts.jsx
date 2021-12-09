@@ -32,7 +32,7 @@ function Blogposts() {
                                         <Card.Img variant="top" src={frameimg} className="card-ct" />
                                         <Card.Body>
                                             <Card.Title >
-                                                <Card.Link href={`/blog/${p._id}`} className="btn-link text-reset stretched-link" >{p.title}</Card.Link>
+                                                <Card.Link href={`#/blog/${p._id}`} className="btn-link text-reset stretched-link" >{p.title}</Card.Link>
                                             </Card.Title>
                                             <footer className="mt-2 blockquote-footer">
                                                 Author: <cite title="Source">{p.author.firstname} {p.author.lastname}</cite>
@@ -49,7 +49,7 @@ function Blogposts() {
                     {/* Learn more last section */}
                     <Row>
                         <Col className="col-12 text-center mt-5">
-                            <Button href="/blog" variant="primery" className="text-secondary">
+                            <Button href="#/blog" variant="primery" className="text-secondary">
                                 Learn more</Button>
                         </Col>
                     </Row>
