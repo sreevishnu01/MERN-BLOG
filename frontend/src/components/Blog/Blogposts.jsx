@@ -7,11 +7,9 @@ import { useGetAllBlogQuery } from '../../redux/blogApi';
 
 
 
-// card  
-
 function Blogposts() {
 
-    const { data, error, isLoading } = useGetAllBlogQuery('post')
+    const { data, error, isLoading } = useGetAllBlogQuery('/post')
     return (
         <Container className="pt-5 pb-5 mb-5">
             <Row className="mb-5">
