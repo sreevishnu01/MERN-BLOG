@@ -40,7 +40,7 @@ function BlogPostList() {
                                             <Card className="border-light">
                                                 <Card.Body>
                                                     <Card.Title >
-                                                        <Card.Link href={`/blog/${p._id}`} className="btn-link text-reset stretched-link" >{p.title}</Card.Link>
+                                                        <Card.Link href={`#/blog/${p._id}`} className="btn-link text-reset stretched-link" >{p.title}</Card.Link>
                                                     </Card.Title>
                                                     <Card.Subtitle className="text-muted">{p.author.firstname} {p.author.lastname}</Card.Subtitle>
                                                     <Card.Text><div dangerouslySetInnerHTML={{ __html: p.description.length > 250 ? `${p.description.substring(0, 250)}...` : p.description }} />

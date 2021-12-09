@@ -30,7 +30,7 @@ const Navbar1 = () => {
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="#link">Lifestyle</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link >
+                        <Nav.Link href="#/about">About</Nav.Link >
                     </Nav>
                     {user ? (
                         <Nav>
@@ -45,14 +45,14 @@ const Navbar1 = () => {
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/login" onClick={(handellogout)}>Logout</NavDropdown.Item>
+                                <NavDropdown.Item href="#/login" onClick={(handellogout)}>Logout</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
 
                     ) : (
                         <div className="col-md-3 text-end">
-                            <Button href="/login" variant='outline-primary' className="me-2">Login</Button>
-                            <Button href="/signin">Sign up</Button>
+                            <Button href="#/login" variant='outline-primary' className="me-2">Login</Button>
+                            <Button href="#/signin">Sign up</Button>
                         </div>
                     )}
 
