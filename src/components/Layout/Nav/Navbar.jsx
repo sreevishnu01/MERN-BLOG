@@ -16,7 +16,7 @@ const Navbar1 = () => {
 
         <Navbar bg="light" expand="lg">
             <Container className="border-bottom py-3">
-                <Navbar.Brand href="/">SleepingWoods</Navbar.Brand>
+                <Navbar.Brand href="#/">SleepingWoods</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav onSelect className="mx-auto">
