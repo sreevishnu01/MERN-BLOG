@@ -49,7 +49,7 @@ function Blogposts() {
                     {/* Learn more last section */}
                     <Row>
                         <Col className="col-12 text-center mt-5">
-                            <Button href="#/blog" variant="primery" className="text-secondary">
+                            <Button href="#/listblog" variant="primery" className="text-secondary">
                                 Learn more</Button>
                         </Col>
                     </Row>

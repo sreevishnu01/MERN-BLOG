@@ -27,7 +27,7 @@ function BlogPostList() {
                         <Col md={9} sm={12}>
 
                             {data.map(p => (
-                                <Card className="border-light card-shadow mb-4">
+                                <Card key={p.id} className="border-light card-shadow mb-4">
                                     <Row >
 
                                         <Col lg={4} md={4}>

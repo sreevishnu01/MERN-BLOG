@@ -21,7 +21,7 @@ function Mainrout() {
                     <Route path="/" exact component={Home} />
                     <Route path="/about" component={About} />
                     <Route path="/Tutorial" component={Tutorial} />
-                    <Route path="/blog/" component={BlogPostList} />
+                    <Route path="/listblog/" component={BlogPostList} />
                     <Route path="/blog/:id" component={Post} />
                     <Route path="/signin" component={Signin} />
                     <Route path="/login">{user ? <Home /> : <Login />}</Route>
