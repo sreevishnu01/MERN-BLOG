@@ -13,7 +13,7 @@ import {
 
 function Footer() {
     return (
-        <Container fluid className="bg-color-gry ">
+        <Container fluid className="section-footer">
             <div className="pt-5 pb-5">
                 <Container>
                     <Row className="footer">
