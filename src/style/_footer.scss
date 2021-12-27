@@ -1,0 +1,78 @@
+@import "./custom";
+
+
+.footer h4{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+}
+.footer .col{
+    padding: 0;
+}
+.f-col-1,.f-col-5 p{
+    font-family: 'popins';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: $gray-light;
+}
+.footer a{
+    text-decoration: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: $gray-light;
+}
+.social-box{
+    width: 48px;
+    height: 48px;
+    background: $light;
+    border-radius: 12px;
+}
+.social-bg{
+    color: $light2;
+}
+
+// chat-button
+
+.chat-button{
+    width: 121px;
+    height: 54px;
+    border: 1px solid $primary;
+    border-radius: 12px;
+    color: $primary;
+}
+
+.app-store{
+    width: 233px;
+    height: 76px;
+    background: $dark;
+    border-radius: 12px;
+    position: relative;
+    padding-top: 10px;
+
+}
+.app-store p {
+    font-family: 'Lato';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12px;
+}
+.app-store h6{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.app-store-icon{
+    color: $white;
+    width: 30.13px;
+    height: 38px;
+    margin-top: 10px;
+}
